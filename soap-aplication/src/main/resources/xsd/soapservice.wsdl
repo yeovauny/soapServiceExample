@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.springSoapExample.com/springsoap/usercreation"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.springSoapExample.com/springsoap/usercreation" targetNamespace="http://www.springSoapExample.com/springsoap/usercreation">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.springSoapExample.com/springsoap/usercreation">
+
+        <!-- this part is from xsd, si the same structuree -->
+            <xs:element name="searchUserRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="rut" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="searchUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" type="xs:string"/>
+                        <xs:element name="apellido" type="xs:string"/>
+                        <xs:element name="rut" type="xs:string"/>
+                        <xs:element name="activo" type="xs:boolean"/>
+                        <xs:element name="id" type="xs:integer"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="saveUserRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" type="xs:string"/>
+                        <xs:element name="apellido" type="xs:string"/>
+                        <xs:element name="rut" type="xs:string"/>
+                        <xs:element name="activo" type="xs:boolean"/>
+                        <xs:element name="id" type="xs:integer"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="savesUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="message" type="xs:string"/>
+                        <xs:element name="fecha" type="xs:date"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+        </xs:schema>
+    </wsdl:types>
+
+
+    <!-- here is the message definition, request and response from soap service-->
+
+    <wsdl:message name="searchUserResponse">
+        <wsdl:part element="tns:searchUserResponse" name="searchUserResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="searchUserRequest">
+        <wsdl:part element="tns:searchUserRequest" name="searchUserRequest">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="saveUserRequest">
+        <wsdl:part element="tns:saveUserRequest" name="saveUserRequest">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="savesUserResponse">
+        <wsdl:part element="tns:savesUserResponse" name="savesUserResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <!-- here is the port type definition for soap service -->
+    <!--  here are the definition for each input , there is an output -->
+    <wsdl:portType name="SoapServicePort">
+        <wsdl:operation name="searchUserRequest">
+            <wsdl:input message="tns:searchUserRequest" name="searchUserRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:searchUserResponse" name="searchUserResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveUserRequest">
+            <wsdl:input message="tns:saveUserRequest" name="saveUserRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:savesUserResponse" name="savesUserResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- here is the definition of the binding, one by one -->
+    <wsdl:binding name="SoapServicePortSoap11" type="tns:SoapServicePort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="searchUserRequest">
+            <soap:operation soapAction="" />
+            <wsdl:input name="searchUserRequest">
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output name="searchUserResponse">
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveUserRequest">
+            <soap:operation soapAction="" />
+            <wsdl:input name="saveUserRequest">
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output name="savesUserResponse">
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <!--here is the definition of service for out service -->
+
+
+    <wsdl:service name="SearchUserPortService">
+        <wsdl:port binding="tns:SoapServicePortSoap11" name="SoapServicePortSoap11">
+            <soap:address location="http://localhost:8095/api/soapservice/" />
+        </wsdl:port>
+    </wsdl:service>
+
+
+    <!-- all example definition is here -->
+    <!-- https://www.youtube.com/watch?v=CPbbYV-RXIc -->
+
+</wsdl:definitions>
+
+

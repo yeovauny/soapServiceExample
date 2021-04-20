@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.springSoapExample.com/springsoap/usercreation"
+           targetNamespace="http://www.springSoapExample.com/springsoap/usercreation" elementFormDefault="qualified">
+
+
+
+    <xs:element name="searchUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="rut" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="searchUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="apellido" type="xs:string"/>
+                <xs:element name="rut" type="xs:string"/>
+                <xs:element name="activo" type="xs:boolean"/>
+                <xs:element name="id" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="saveUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="apellido" type="xs:string"/>
+                <xs:element name="rut" type="xs:string"/>
+                <xs:element name="activo" type="xs:boolean"/>
+                <xs:element name="id" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="savesUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+                <xs:element name="fecha" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

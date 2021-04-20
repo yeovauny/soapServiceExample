@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "b93b1302-aa30-4dd7-911b-89601328783f",
+		"name": "SoapAplicationExamples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "soap-aplication",
+			"item": [
+				{
+					"name": "search request webService",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n                  xmlns:gs=\"http://www.baeldung.com/springsoap/gen\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <gs:getCountryRequest>\n            <gs:name>Spain</gs:name>\n        </gs:getCountryRequest>\n    </soapenv:Body>\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8095/ws",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"ws"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save request webService",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n                  xmlns:gs=\"http://www.springSoapExample.com/springsoap/usercreation\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <gs:saveUserRequest>\n            <gs:name>Juan Carlos</gs:name>\n            <gs:apellido>Colmenares Gomez</gs:apellido>\n            <gs:rut>1111-7</gs:rut>\n            <gs:activo>true</gs:activo>\n            <gs:id>18</gs:id>\n        </gs:saveUserRequest>\n    </soapenv:Body>\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8095/api/soapservice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"api",
+								"soapservice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search user By Rut",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n                  xmlns:gs=\"http://www.springSoapExample.com/springsoap/usercreation\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <gs:searchUserRequest>\n            <gs:rut>1111-7</gs:rut>\n        </gs:searchUserRequest>\n    </soapenv:Body>\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8095/api/soapservice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"api",
+								"soapservice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "soap Contract",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n                  xmlns:gs=\"http://www.baeldung.com/springsoap/gen\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <gs:getCountryRequest>\n            <gs:name>Spain</gs:name>\n        </gs:getCountryRequest>\n    </soapenv:Body>\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8095/api/soapservice.wsdl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"api",
+								"soapservice.wsdl"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bff-soapAplication",
+			"item": [
+				{
+					"name": "Search by rut",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8096/bff-soapservice/api/search?rut=1111-9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"bff-soapservice",
+								"api",
+								"search"
+							],
+							"query": [
+								{
+									"key": "rut",
+									"value": "1111-9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"name\":\"Carlos\",\n    \"apellido\":\"Gomez\",\n    \"rut\":\"1111-9\",\n    \"activo\":\"true\",\n    \"id\":4\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/bff-soapservice/api/savenewuser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"bff-soapservice",
+								"api",
+								"savenewuser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
