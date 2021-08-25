@@ -5,6 +5,7 @@ import com.tyr.soap.application.domain.generated.SavesUserResponse;
 import com.tyr.soap.application.domain.generated.SearchUserResponse;
 import com.tyr.soap.application.service.BffService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class EndPointResources {
     BffService serviceImpl;
 
     @GetMapping("search")
+    //@Cacheable(value = "users",key = "#rut")
     public ResponseEntity<SearchUserResponse> searchUser(@RequestParam Optional<String> rut){
 
         return serviceImpl.searchUserService(rut.get()).map(

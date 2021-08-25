@@ -1,13 +1,17 @@
 package com.tyr.soap.application.domain;
 
-import javax.xml.bind.annotation.XmlElement;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+
 import java.math.BigInteger;
 
+@RedisHash("User")
 public class User {
     protected String name;
 
     protected String apellido;
 
+    @Id
     protected String rut;
 
     protected boolean activo;
@@ -52,5 +56,19 @@ public class User {
 
     public void setId(BigInteger id) {
         this.id = id;
+    }
+
+
+
+
+    @Override
+    public String toString() {
+        return "{" +
+                "name='" + name + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", rut='" + rut + '\'' +
+                ", activo=" + activo +
+                ", id=" + id +
+                '}';
     }
 }

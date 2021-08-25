@@ -1,0 +1,20 @@
+1.-search all key
+keys *
+
+2.-get string information
+get <key>
+
+3.-get hash information
+hgetall <key>
+
+4.-get list type
+irange <key> <start> <end>
+
+5.-get set type
+smembers <key>
+
+6.- get sorted sets types
+zrangebyscore <key> <min> <max>
+
+7.- kwon key type
+type <key>

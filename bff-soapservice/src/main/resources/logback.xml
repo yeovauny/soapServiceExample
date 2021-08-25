@@ -1,0 +1,60 @@
+<configuration>
+    <property name="CONSOLE_PATTERN"
+              value ="%date %-5level [%thread] [bff-soapservice] [%X{correlation-id}] %logger{36} - %msg `~~~{'applicationGroup':'service', 'uuid':'%X{uuid}'} %n"/>
+    <property name="FILE_PATTERN"
+              value ="%date %-5level [%thread] [bff-soapservice] [%X{correlation-id}] %logger{36} - %msg `~~~{'applicationGroup':'service', 'uuid':'%X{uuid}'} %n"/>
+
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+      <!--  <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.JaninoEventEvaluator">
+                <expression>
+                    return (message.toLowerCase().contains("password"));
+                </expression>
+            </evaluator>
+            <OnMismatch>ACCEPT</OnMismatch>
+            <OnMatch>DENY</OnMatch>
+        </filter> -->
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${CONSOLE_PATTERN}</pattern>
+
+        </encoder>
+    </appender>
+
+    <appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- this filter miss with one dependency janino dependency -->
+      <!--  <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.JaninoEventEvaluator">
+                <expression>
+                    return (message.toLowerCase().contains("password"));
+                </expression>
+            </evaluator>
+            <OnMismatch>ACCEPT</OnMismatch>
+            <OnMatch>DENY</OnMatch>
+        </filter> -->
+        <file>${log.path:-./target}/logs/bff-soapservice.log</file>
+        <append>true</append>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${FILE_PATTERN}</pattern>
+
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path:-./target}/logs/bff-soapservice-%d{yyyyMMdd}-%i.log.zip</fileNamePattern>
+
+            <maxHistory>60</maxHistory>
+            <maxFileSize>20MB</maxFileSize>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="LOGFILE" />
+    </root>
+
+</configuration>
+
+<!-- this log working leaving the .log on the target folder with maven. -->
