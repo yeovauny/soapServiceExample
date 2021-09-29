@@ -6,6 +6,6 @@ this project will be
 
 soap-aplication : this project is soap request microservice and persist the information on h2 database
 
-bff-soapservice: this project is a json request, microservice and call the soap-aplication for save an search information
+bff-soapservice: this project is a json request, microservice and call the soap-aplication for save an search information, that applications save the information on cache with redis.
 
 mfe-usercreate: this project is a react project that will call the bff-soapservice
