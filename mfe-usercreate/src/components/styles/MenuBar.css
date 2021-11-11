@@ -1,0 +1,53 @@
+.MenuBar_Header{
+    height: 10%;
+    display: flex;
+    background-color: #9099A2;
+    justify-content: left;
+	position: relative;
+	
+}
+
+
+.MenuBar_Info{
+    padding-top: 4%;
+    display: inline-flex;
+    justify-content: center;
+    margin-left: 30px;
+
+
+}
+
+.MenuBar_Option{
+   
+    
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+
+#nav {
+	width: 100%;
+	float: left;
+	margin: 0 0 3em 0;
+	padding: 0;
+	
+	list-style: none; }
+#nav li {
+	float: left; }
+
+#nav li a {
+		display: block;
+		padding: 8px 15px;
+		text-decoration: none;
+		font-weight: bold;
+		color: rgb(22, 26, 27);
+		border-right: 1px solid #ccc; }
+
+#nav li a {
+		display: block;
+		padding: 8px 15px;
+		text-decoration: none;
+		font-weight: bold;
+		color: rgb(15, 18, 19);
+		border-right: 1px solid #ccc; }

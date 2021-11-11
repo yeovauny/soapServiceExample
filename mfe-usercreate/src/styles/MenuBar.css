@@ -1,0 +1,6 @@
+.Header_MenuBar {
+height: 100px;
+display: flex;
+background-color: lightslategray;
+justify-content: left;
+}
